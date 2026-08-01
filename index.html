@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Stalwart Jajati — Room Service Menu</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #1a120b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: linear-gradient(180deg, #2b1d10 0%, #1a120b 100%);
+    border-bottom: 2px solid #b8862f;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  header h1 {
+    color: #d8a84e;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  header p {
+    color: #c9b79a;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+
+  .viewer-wrap {
+    width: 100%;
+    max-width: 900px;
+    flex: 1;
+    padding: 12px;
+  }
+
+  .pdf-frame {
+    width: 100%;
+    height: 82vh;
+    border: none;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 12px 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary {
+    background: #b8862f;
+    color: #1a120b;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #d8a84e;
+    border: 1px solid #b8862f;
+  }
+
+  .fallback-note {
+    text-align: center;
+    color: #a99a82;
+    font-size: 0.8rem;
+    padding: 0 20px 20px;
+    display: none;
+  }
+
+  footer {
+    color: #7a6b56;
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hotel Stalwart Jajati</h1>
+  <p>Master Canteen Square, Janpath, Bhubaneswar, Odisha 751001 &nbsp;|&nbsp; Ph: 0674-3535756, 3535959</p>
+</header>
+
+<div class="viewer-wrap">
+  <embed src="menu.pdf" type="application/pdf" class="pdf-frame" id="pdfEmbed" />
+</div>
+
+<p class="fallback-note" id="fallbackNote">
+  Your browser can't preview PDFs inline. Tap "Open Menu PDF" below to view it.
+</p>
+
+<div class="actions">
+  <a href="menu.pdf" target="_blank" class="btn btn-primary">Open Menu PDF</a>
+  <a href="menu.pdf" download class="btn btn-secondary">Download</a>
+</div>
+
+<footer>Room Service Menu · Taxes as applicable</footer>
+
+<script>
+  // Some mobile browsers (older iOS Safari, in-app browsers) can't render
+  // <embed type="application/pdf">. Detect and show a fallback message.
+  (function () {
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var isAndroid = /Android/.test(navigator.userAgent);
+    if (isIOS || isAndroid) {
+      document.getElementById('fallbackNote').style.display = 'block';
+    }
+  })();
+</script>
+
+</body>
+</html>
